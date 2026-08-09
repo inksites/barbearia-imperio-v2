@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbearia Império | Tradição e Precisão</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --paper:#F7F6F3;
+    --ink:#181B23;
+    --muted:#6B7280;
+    --line:#E7E5E0;
+    --line-strong:#D8D5CE;
+
+    --coral:#FF5A3C;
+    --coral-deep:#E14226;
+    --blue:#2F6FED;
+    --blue-deep:#1E56C9;
+
+    --whatsapp:#25D366;
+    --whatsapp-deep:#1DA851;
+    --ig-1:#F58529;
+    --ig-2:#DD2A7B;
+    --ig-3:#8134AF;
+
+    --display:'Fraunces', serif;
+    --body:'Manrope', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--white); color:var(--ink); font-family:var(--body); line-height:1.5; overflow-x:hidden;}
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  header.site{
+    position:fixed; top:0; left:0; right:0; z-index:40;
+    background:rgba(255,255,255,0.88); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1080px; margin:0 auto;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-name{font-family:var(--display); font-weight:600; font-size:1.1rem; color:var(--ink);}
+  .brand-rating{font-family:var(--mono); font-size:0.72rem; color:var(--coral); border:1px solid var(--line-strong); padding:4px 8px; border-radius:2px;}
+  .nav-actions{display:flex; align-items:center; gap:10px;}
+  .nav-cta{
+    font-family:var(--mono); font-size:0.74rem; text-transform:uppercase; letter-spacing:0.06em;
+    background:var(--whatsapp); color:#0B2415; padding:11px 20px; border-radius:2px; text-decoration:none;
+    transition:background .2s ease, transform .2s ease; white-space:nowrap; font-weight:700;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .nav-cta:hover{background:var(--whatsapp-deep); transform:translateY(-1px);}
+  .nav-ig{
+    width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--ig-1), var(--ig-2), var(--ig-3));
+    transition:transform .2s ease;
+  }
+  .nav-ig:hover{transform:translateY(-1px) scale(1.05);}
+  .nav-ig svg{width:18px; height:18px;}
+
+  .hero{padding:168px 0 84px; position:relative;}
+  .eyebrow{font-family:var(--mono); font-size:0.76rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--coral); display:flex; align-items:center; gap:10px; margin-bottom:26px;}
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--coral); display:inline-block;}
+  h1{font-family:var(--display); font-weight:600; font-size:clamp(2.1rem, 5vw, 3.8rem); line-height:1.08; max-width:16ch; color:var(--ink);}
+  h1 em{font-style:italic; font-weight:500; color:var(--coral);}
+  .hero-sub{margin-top:22px; font-size:1.08rem; color:var(--muted); max-width:48ch; line-height:1.65;}
+  .hero-actions{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .btn-primary{
+    font-family:var(--mono); font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
+    background:var(--whatsapp); color:#0B2415; padding:16px 28px; border-radius:2px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:10px; font-weight:700; transition:background .2s ease, transform .2s ease;
+    box-shadow:0 10px 24px rgba(37,211,102,0.28);
+  }
+  .btn-primary svg{width:18px; height:18px;}
+  .btn-primary:hover{background:var(--whatsapp-deep); transform:translateY(-2px);}
+  .btn-instagram{
+    font-family:var(--mono); font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
+    background:linear-gradient(135deg, var(--ig-1), var(--ig-2), var(--ig-3)); color:#fff; padding:16px 28px;
+    border-radius:2px; text-decoration:none; display:inline-flex; align-items:center; gap:10px; font-weight:700;
+    transition:transform .2s ease, filter .2s ease; box-shadow:0 10px 24px rgba(221,42,123,0.22);
+  }
+  .btn-instagram svg{width:18px; height:18px;}
+  .btn-instagram:hover{filter:brightness(1.08); transform:translateY(-2px);}
+  .btn-ghost{font-family:var(--mono); font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink); padding:16px 4px; text-decoration:none; border-bottom:1px solid var(--line-strong);}
+  .btn-ghost:hover{border-color:var(--ink);}
+  .hero-stats{margin-top:56px; display:flex; gap:40px; flex-wrap:wrap; font-family:var(--mono); font-size:0.76rem; color:var(--muted);}
+  .hero-stats strong{display:block; font-family:var(--body); font-weight:700; font-size:1.35rem; color:var(--ink);}
+
+  /* floating action buttons */
+  .fab-stack{position:fixed; right:22px; bottom:22px; z-index:50; display:flex; flex-direction:column; gap:12px;}
+  .fab{
+    width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px rgba(0,0,0,0.35); transition:transform .2s ease;
+  }
+  .fab:hover{transform:scale(1.08);}
+  .fab.fab-wa{background:var(--whatsapp);}
+  .fab.fab-ig{background:linear-gradient(135deg, var(--ig-1), var(--ig-2), var(--ig-3));}
+  .fab svg{width:26px; height:26px;}
+
+  section{padding:88px 0; position:relative;}
+  .section-tag{font-family:var(--mono); font-size:0.74rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--coral); margin-bottom:16px;}
+  h2{font-family:var(--display); font-weight:600; font-size:clamp(1.6rem, 3vw, 2.2rem); line-height:1.16; max-width:22ch; color:var(--ink);}
+  .section-lede{margin-top:18px; font-size:1rem; color:var(--muted); max-width:56ch; line-height:1.65;}
+
+  .divider{width:100%; height:1px; background:var(--line);}
+
+  /* about */
+  .about-body{margin-top:24px; font-size:1rem; color:var(--muted); max-width:62ch; line-height:1.75;}
+
+  /* services */
+  .service-groups{margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .service-group h3{font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--coral); margin-bottom:18px; padding-bottom:12px; border-bottom:1px solid var(--line-strong);}
+  .service-row{display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid var(--line);}
+  .service-row .name{font-weight:600; font-size:0.96rem; color:var(--ink);}
+  .service-row .desc{font-size:0.82rem; color:var(--muted); margin-top:3px;}
+  .service-row .price{font-family:var(--mono); font-size:0.92rem; color:var(--blue); font-weight:600; white-space:nowrap; padding-left:16px;}
+  .service-note{margin-top:22px; font-family:var(--mono); font-size:0.78rem; color:var(--muted);}
+
+  /* team */
+  .team-grid{margin-top:48px; display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line);}
+  .team-card{background:var(--white); padding:30px 26px;}
+  .team-card .avatar{width:52px; height:52px; border-radius:50%; background:var(--coral); display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:600; color:#fff; font-size:1.2rem; margin-bottom:16px;}
+  .team-card:nth-child(2) .avatar{background:var(--blue);}
+  .team-card h3{font-family:var(--display); font-weight:600; font-size:1.1rem; margin-bottom:4px; color:var(--ink);}
+  .team-card span{font-family:var(--mono); font-size:0.76rem; color:var(--coral);}
+  .team-card:nth-child(2) span{color:var(--blue);}
+  .team-card p{margin-top:12px; font-size:0.86rem; color:var(--muted); line-height:1.55;}
+
+  /* amenities */
+  .amenities-row{margin-top:44px; display:flex; flex-wrap:wrap; gap:14px;}
+  .amenity-pill{
+    font-family:var(--mono); font-size:0.78rem; color:var(--ink); border:1px solid var(--line-strong);
+    padding:10px 18px; border-radius:20px; display:flex; align-items:center; gap:8px; background:var(--paper);
+  }
+  .amenity-pill::before{content:'✓'; color:var(--coral); font-weight:700;}
+
+  /* reviews */
+  .review-summary{margin-top:48px; display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;}
+  .review-summary .score{font-family:var(--display); font-weight:600; font-size:3rem; color:var(--coral);}
+  .review-summary .stars{color:var(--coral); font-size:1.1rem; letter-spacing:2px;}
+  .review-summary .count{font-family:var(--mono); font-size:0.82rem; color:var(--muted);}
+  .review-grid{margin-top:36px; display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;}
+  .review-card{background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:26px;}
+  .review-card .stars{color:var(--coral); font-size:0.85rem; letter-spacing:2px; margin-bottom:12px;}
+  .review-card p{font-size:0.9rem; color:var(--ink); line-height:1.6; font-style:italic;}
+  .review-card .who{margin-top:14px; font-family:var(--mono); font-size:0.74rem; color:var(--muted);}
+
+  /* contact */
+  .contact-panel{margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .contact-block{background:var(--white); padding:34px;}
+  .contact-block h3{font-family:var(--mono); font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--coral); margin-bottom:16px;}
+  .contact-block .line-item{padding:8px 0; font-size:0.92rem; color:var(--ink); display:flex; justify-content:space-between; gap:12px; border-bottom:1px solid var(--line);}
+  .contact-block .line-item:last-child{border-bottom:none;}
+  .contact-block .line-item span:first-child{color:var(--muted);}
+  .social-row{margin-top:20px; display:flex; gap:14px;}
+  .social-row a{
+    font-family:var(--mono); font-size:0.76rem; color:var(--ink); border:1px solid var(--line-strong);
+    padding:8px 14px; border-radius:2px; text-decoration:none;
+  }
+  .social-row a:hover{border-color:var(--coral); color:var(--coral);}
+
+  .final-cta{text-align:center; padding:100px 0 120px; background:var(--paper);}
+  .final-cta h2{max-width:none; margin:0 auto;}
+  .final-cta .hero-actions{justify-content:center; margin-top:32px;}
+
+  footer{border-top:1px solid var(--line); padding:32px 0;}
+  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-family:var(--mono); font-size:0.72rem; color:var(--muted);}
+  .footer-inner a{color:var(--coral); text-decoration:none; border-bottom:1px solid rgba(255,90,60,0.35);}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width: 820px){
+    .service-groups{grid-template-columns:1fr; gap:32px;}
+    .team-grid{grid-template-columns:1fr;}
+    .review-grid{grid-template-columns:1fr;}
+    .contact-panel{grid-template-columns:1fr;}
+    .hero{padding:140px 0 64px;}
+    .fab-stack{right:16px; bottom:16px;}
+    .fab{width:50px; height:50px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;} .reveal{opacity:1; transform:none; transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="brand-name">Império<span style="color:var(--coral)">.</span></span>
+      <span class="brand-rating">★ 4.9</span>
+    </div>
+    <div class="nav-actions">
+    <a class="nav-cta" href="https://wa.me/5500000000000?text=Oi!%20Quero%20agendar%20um%20hor%C3%A1rio" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.2-1.77 1.24-.45.05-1.03.07-1.66-.1-.38-.11-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73s.68-1.93.92-2.2c.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.45.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.16-.28.35-.4.47-.13.13-.27.27-.11.53.15.26.68 1.12 1.46 1.82 1 .89 1.85 1.17 2.11 1.3.26.13.41.11.56-.07.16-.18.65-.76.82-1.02.18-.26.35-.22.58-.13.24.09 1.5.71 1.76.84.26.13.44.2.5.31.06.11.06.63-.16 1.25z"/></svg>
+        WhatsApp
+    </a>
+    <a class="nav-ig" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
+    </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Barbearia · desde 2014</div>
+    <h1 class="reveal">Tradição no <em>corte</em>. Precisão na <em>navalha</em>.</h1>
+    <p class="hero-sub reveal">Cortes clássicos e modernos, barba feita na navalha e um ambiente pensado pra você sair de cabeça erguida. Agenda direto pelo WhatsApp, sem enrolação.</p>
+    <div class="hero-actions reveal">
+      <a class="btn-primary" href="https://wa.me/5500000000000?text=Oi!%20Quero%20agendar%20um%20hor%C3%A1rio" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.2-1.77 1.24-.45.05-1.03.07-1.66-.1-.38-.11-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73s.68-1.93.92-2.2c.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.45.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.16-.28.35-.4.47-.13.13-.27.27-.11.53.15.26.68 1.12 1.46 1.82 1 .89 1.85 1.17 2.11 1.3.26.13.41.11.56-.07.16-.18.65-.76.82-1.02.18-.26.35-.22.58-.13.24.09 1.5.71 1.76.84.26.13.44.2.5.31.06.11.06.63-.16 1.25z"/></svg>
+        Agendar no WhatsApp
+      </a>
+      <a class="btn-instagram" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
+        Seguir no Instagram
+      </a>
+      <a class="btn-ghost" href="#servicos">Ver serviços</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div><strong>11 anos</strong>de ofício</div>
+      <div><strong>4.9</strong>nota no Google · 11 avaliações</div>
+      <div><strong>3</strong>cadeiras</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="section-tag">A barbearia</div>
+    <h2 class="reveal">Ofício de barbeiro, do jeito que sempre foi.</h2>
+    <p class="about-body reveal">Aqui o corte é feito com calma e técnica, sem pressa de encaixar o próximo cliente. Cada navalhada é afiada na hora, cada corte é discutido antes de começar. Um espaço pra homem se cuidar de verdade: café, conversa boa e um resultado que dura a semana inteira. Atendemos por ordem de chegada ou com hora marcada.</p>
+
+    <div class="amenities-row reveal">
+      <span class="amenity-pill">Wi-Fi grátis</span>
+      <span class="amenity-pill">Estacionamento grátis</span>
+      <span class="amenity-pill">Aceita cartão e Pix</span>
+      <span class="amenity-pill">Atende crianças</span>
+      <span class="amenity-pill">TV e climatização</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section id="servicos">
+  <div class="wrap">
+    <div class="section-tag">Comanda Império</div>
+    <h2 class="reveal">O que sai daqui</h2>
+    <p class="section-lede reveal">Preços fixos, sem surpresa no caixa.</p>
+
+    <div class="service-groups">
+      <div class="service-group reveal">
+        <h3>Cabelo &amp; barba</h3>
+        <div class="service-row">
+          <div><div class="name">Corte tradicional</div><div class="desc">Tesoura e máquina, acabamento na navalha</div></div>
+          <div class="price">R$ 45</div>
+        </div>
+        <div class="service-row">
+          <div><div class="name">Barba completa</div><div class="desc">Toalha quente, navalha e óleo finalizador</div></div>
+          <div class="price">R$ 35</div>
+        </div>
+        <div class="service-row">
+          <div><div class="name">Corte + barba</div><div class="desc">O combo clássico da casa</div></div>
+          <div class="price">R$ 70</div>
+        </div>
+        <div class="service-row">
+          <div><div class="name">Sobrancelha na navalha</div><div class="desc">Alinhamento rápido, sem exagero</div></div>
+          <div class="price">R$ 20</div>
+        </div>
+      </div>
+
+      <div class="service-group reveal">
+        <h3>Pacotes &amp; assinatura</h3>
+        <div class="service-row">
+          <div><div class="name">Pacote mensal</div><div class="desc">4 cortes + 4 barbas, um por semana</div></div>
+          <div class="price">R$ 260</div>
+        </div>
+        <div class="service-row">
+          <div><div class="name">Clube Império</div><div class="desc">Corte ilimitado no mês, fidelidade sem burocracia</div></div>
+          <div class="price">R$ 149/mês</div>
+        </div>
+        <div class="service-row">
+          <div><div class="name">Dia do noivo</div><div class="desc">Corte, barba e sobrancelha num único horário</div></div>
+          <div class="price">R$ 110</div>
+        </div>
+      </div>
+    </div>
+    <div class="service-note reveal">Pagamento via Pix, cartão ou dinheiro — sem taxa extra</div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section id="equipe">
+  <div class="wrap">
+    <div class="section-tag">Nossa equipe</div>
+    <h2 class="reveal">Quem segura a navalha</h2>
+
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="avatar">C</div>
+        <h3>Carlos</h3>
+        <span>Fundador · Master barber</span>
+        <p>11 anos de ofício, especialista em navalha e barba desenhada.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="avatar">R</div>
+        <h3>Rafael</h3>
+        <span>Barbeiro</span>
+        <p>Referência em degradê e cortes infantis, com paciência de sobra.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="avatar">D</div>
+        <h3>Diego</h3>
+        <span>Barbeiro</span>
+        <p>Foco em cortes clássicos e acabamento impecável na tesoura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section id="avaliacoes">
+  <div class="wrap">
+    <div class="section-tag">Quem já passou por aqui</div>
+    <h2 class="reveal">Avaliações</h2>
+
+    <div class="review-summary reveal">
+      <span class="score">4.9</span>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="count">11 avaliações no Google</div>
+      </div>
+    </div>
+
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Melhor barba que já fiz, o cara tem paciência e capricha em cada detalhe."</p>
+        <div class="who">— Cliente Google</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Virei cliente fixo, agendo pelo WhatsApp e sempre sou atendido no horário certo."</p>
+        <div class="who">— Cliente Google</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Ambiente show, atendimento sem enrolação e o corte sempre sai igual eu pedi."</p>
+        <div class="who">— Cliente Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="section-tag">Como chegar</div>
+    <h2 class="reveal">Localização e contato</h2>
+
+    <div class="contact-panel reveal">
+      <div class="contact-block">
+        <h3>Endereço &amp; horário</h3>
+        <div class="line-item"><span>Endereço</span><span>Rua Exemplo, 123 — Boa Viagem, Recife/PE</span></div>
+        <div class="line-item"><span>Seg – Sex</span><span>09:00 às 19:00</span></div>
+        <div class="line-item"><span>Sábado</span><span>09:00 às 17:00</span></div>
+        <div class="line-item"><span>Domingo</span><span>Fechado</span></div>
+      </div>
+      <div class="contact-block">
+        <h3>Fale com a gente</h3>
+        <div class="line-item"><span>WhatsApp</span><span>(81) 90000-0000</span></div>
+        <div class="line-item"><span>Telefone fixo</span><span>(81) 3200-0000</span></div>
+        <div class="social-row">
+          <a href="https://wa.me/5500000000000?text=Oi!%20Quero%20agendar%20um%20hor%C3%A1rio" target="_blank" rel="noopener" style="border-color:var(--whatsapp); color:var(--whatsapp);">WhatsApp</a>
+          <a href="#" target="_blank" rel="noopener" style="border-color:var(--ig-2); color:var(--ig-2);">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="section-tag" style="justify-content:center; display:flex;">Bora marcar</div>
+    <h2 class="reveal">Seu próximo corte já tem hora marcada.</h2>
+    <div class="hero-actions reveal">
+      <a class="btn-primary" href="https://wa.me/5500000000000?text=Oi!%20Quero%20agendar%20um%20hor%C3%A1rio" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.2-1.77 1.24-.45.05-1.03.07-1.66-.1-.38-.11-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73s.68-1.93.92-2.2c.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.45.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.16-.28.35-.4.47-.13.13-.27.27-.11.53.15.26.68 1.12 1.46 1.82 1 .89 1.85 1.17 2.11 1.3.26.13.41.11.56-.07.16-.18.65-.76.82-1.02.18-.26.35-.22.58-.13.24.09 1.5.71 1.76.84.26.13.44.2.5.31.06.11.06.63-.16 1.25z"/></svg>
+        Agendar no WhatsApp
+      </a>
+      <a class="btn-instagram" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
+        Seguir no Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Barbearia Império — modelo de demonstração</span>
+    <span>site feito por <a href="#" target="_blank" rel="noopener">Tinta Digital</a></span>
+  </div>
+</footer>
+
+<div class="fab-stack">
+  <a class="fab fab-ig" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
+  </a>
+  <a class="fab fab-wa" href="https://wa.me/5500000000000?text=Oi!%20Quero%20agendar%20um%20hor%C3%A1rio" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#0B2415"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.2-1.77 1.24-.45.05-1.03.07-1.66-.1-.38-.11-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73s.68-1.93.92-2.2c.24-.26.53-.33.7-.33.18 0 .35 0 .5.01.16.01.38-.06.6.45.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.16-.28.35-.4.47-.13.13-.27.27-.11.53.15.26.68 1.12 1.46 1.82 1 .89 1.85 1.17 2.11 1.3.26.13.41.11.56-.07.16-.18.65-.76.82-1.02.18-.26.35-.22.58-.13.24.09 1.5.71 1.76.84.26.13.44.2.5.31.06.11.06.63-.16 1.25z"/></svg>
+  </a>
+</div>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
